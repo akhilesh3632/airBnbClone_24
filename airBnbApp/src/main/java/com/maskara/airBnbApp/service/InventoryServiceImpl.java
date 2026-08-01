@@ -2,10 +2,12 @@ package com.maskara.airBnbApp.service;
 
 
 import com.maskara.airBnbApp.dto.HotelDto;
+import com.maskara.airBnbApp.dto.HotelPriceDto;
 import com.maskara.airBnbApp.dto.HotelSearchRequest;
 import com.maskara.airBnbApp.modal.Hotel;
 import com.maskara.airBnbApp.modal.Inventory;
 import com.maskara.airBnbApp.modal.Room;
+import com.maskara.airBnbApp.repository.HotelMinPriceRepository;
 import com.maskara.airBnbApp.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,18 +27,20 @@ import java.time.temporal.ChronoUnit;
 public class InventoryServiceImpl implements InventoryService{
     private final ModelMapper modelMapper;
     private final InventoryRepository inventoryRepository;
+    private final HotelMinPriceRepository hotelMinPriceRepository;
 
     @Override
     public void initializeRoomForAYear(Room room) {
         LocalDate today = LocalDate.now();
         LocalDate endDate = today.plusYears(1);
-        for(; !today.isAfter(endDate); today.plusDays(1)){
+        for(; !today.isAfter(endDate); today=today.plusDays(1)){
             Inventory inventory = Inventory.builder()
                     .hotel(room.getHotel())
                     .room(room)
                     .bookedCount(0)
                     .city(room.getHotel().getCity())
                     .date(today)
+                    .reservedCount(0)
                     .price(room.getBasePrice())
                     .surgeFactor(BigDecimal.ONE)
                     .totalCount(room.getTotalCount())
@@ -57,17 +61,19 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public Page<HotelDto> searchHotels(HotelSearchRequest hotelSearchRequest) {
+    public Page<HotelPriceDto> searchHotels(HotelSearchRequest hotelSearchRequest) {
         log.info("Searching hotels for {} city, from {} to {}",hotelSearchRequest.getCity(),hotelSearchRequest.getStartDate(),hotelSearchRequest.getEndDate());
         Pageable pageable = PageRequest.of(hotelSearchRequest.getPage(), hotelSearchRequest.getSize());
 
         long dateCount=
                 ChronoUnit.DAYS.between(hotelSearchRequest.getStartDate(),hotelSearchRequest.getEndDate())+1;
 
-        Page<Hotel> hotelPage = inventoryRepository.findHotelsWithAvailableInventory(hotelSearchRequest.getCity(),
+        //business logic - 90 days
+        Page<HotelPriceDto> hotelPage =
+                hotelMinPriceRepository.findHotelsWithAvailableInventory(hotelSearchRequest.getCity(),
                 hotelSearchRequest.getStartDate(), hotelSearchRequest.getEndDate(),hotelSearchRequest.getRoomsCount(),
                 dateCount, pageable);
 
-        return hotelPage.map((element)->modelMapper.map(element, HotelDto.class));
+        return hotelPage;
     }
 }

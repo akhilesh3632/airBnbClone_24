@@ -4,7 +4,7 @@ import com.maskara.airBnbApp.modal.Hotel;
 import com.maskara.airBnbApp.modal.Inventory;
 import com.maskara.airBnbApp.modal.Room;
 import jakarta.persistence.LockModeType;
-import jakarta.persistence.LockModeType;
+
 //import org.hibernate.query.Page;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+public interface    InventoryRepository extends JpaRepository<Inventory, Long> {
     void deleteByRoom(Room room);
 
     @Query("""
@@ -56,6 +56,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     );
 
 
+    List<Inventory> findByHotelAndDateBetween(Hotel hotel, LocalDate startDate, LocalDate endDate);
 }
 
 

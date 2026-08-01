@@ -4,7 +4,7 @@ import com.maskara.airBnbApp.modal.HotelContactInfo;
 
 import lombok.Data;
 
-import java.util.List;
+
 
 @Data
 public class HotelDto {

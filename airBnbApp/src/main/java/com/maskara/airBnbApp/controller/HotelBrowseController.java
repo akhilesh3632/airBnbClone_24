@@ -3,6 +3,7 @@ package com.maskara.airBnbApp.controller;
 
 import com.maskara.airBnbApp.dto.HotelDto;
 import com.maskara.airBnbApp.dto.HotelInfoDto;
+import com.maskara.airBnbApp.dto.HotelPriceDto;
 import com.maskara.airBnbApp.dto.HotelSearchRequest;
 import com.maskara.airBnbApp.service.HotelService;
 import com.maskara.airBnbApp.service.InventoryService;
@@ -21,9 +22,9 @@ public class HotelBrowseController {
     private final HotelService hotelService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<HotelDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest){
+    public ResponseEntity<Page<HotelPriceDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest){
 
-        Page<HotelDto> page = inventoryService.searchHotels(hotelSearchRequest);
+        var page = inventoryService.searchHotels(hotelSearchRequest);
         return ResponseEntity.ok(page);
     }
 

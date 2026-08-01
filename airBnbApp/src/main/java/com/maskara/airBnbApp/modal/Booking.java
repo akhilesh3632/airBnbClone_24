@@ -51,9 +51,7 @@ public class Booking {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_id")
-    private Payment payment;
+
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

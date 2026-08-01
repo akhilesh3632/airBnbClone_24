@@ -5,7 +5,7 @@ import com.maskara.airBnbApp.dto.RoomDto;
 import java.util.List;
 
 public interface RoomService {
-    RoomDto createNewRoom(Long hotelId,RoomDto roomDto);
+    RoomDto createNewRoom(Long hotelId, RoomDto roomDto);
 
     List<RoomDto> getAllRoomsInHotel(Long hotelId);
 

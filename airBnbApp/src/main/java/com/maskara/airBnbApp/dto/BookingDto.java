@@ -1,6 +1,8 @@
 package com.maskara.airBnbApp.dto;
 
 import com.maskara.airBnbApp.modal.Guest;
+import com.maskara.airBnbApp.modal.Hotel;
+import com.maskara.airBnbApp.modal.Room;
 import com.maskara.airBnbApp.modal.enums.BookingStatus;
 import lombok.Data;
 
@@ -11,6 +13,7 @@ import java.util.Set;
 @Data
 public class BookingDto {
     private Long id;
+
     private Integer roomsCount;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;

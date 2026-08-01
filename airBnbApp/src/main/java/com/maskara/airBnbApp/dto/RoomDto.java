@@ -1,7 +1,6 @@
 package com.maskara.airBnbApp.dto;
 
-import com.maskara.airBnbApp.modal.Hotel;
-import jakarta.persistence.*;
+
 import lombok.Data;
 
 import java.math.BigDecimal;

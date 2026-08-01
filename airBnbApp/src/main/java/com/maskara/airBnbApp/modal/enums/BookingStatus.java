@@ -3,7 +3,7 @@ package com.maskara.airBnbApp.modal.enums;
 public enum BookingStatus {
     RESERVED,
     GUESTS_ADDED,
-   PAYMENT_PENDING,
+   PAYMENTS_PENDING,
 
     CONFIRMED,
     CANCELLED,
