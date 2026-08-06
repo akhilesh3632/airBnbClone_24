@@ -4,6 +4,8 @@ import com.maskara.airBnbApp.dto.HotelDto;
 import com.maskara.airBnbApp.dto.HotelInfoDto;
 import com.maskara.airBnbApp.modal.Hotel;
 
+import java.util.List;
+
 public interface HotelService {
 
     HotelDto createNewHotel(HotelDto hotelDto);
@@ -19,5 +21,5 @@ public interface HotelService {
     HotelInfoDto getHotelInfoById(Long hotelId);
 
 
-
+    List<HotelDto> getAllHotels();
 }
