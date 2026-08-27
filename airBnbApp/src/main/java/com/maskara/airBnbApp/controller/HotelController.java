@@ -73,4 +73,9 @@ public class HotelController {
         return ResponseEntity.ok(bookingService.getHotelReport(hotelId,startDate,endDate));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<HotelDto>> getAllHotelsForAdmin(){
+        return ResponseEntity.ok(hotelService.getAllHotelsForAdmin());
+    }
+
 }

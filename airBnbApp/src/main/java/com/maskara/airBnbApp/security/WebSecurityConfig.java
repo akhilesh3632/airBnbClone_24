@@ -38,9 +38,11 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/admin/**").hasRole("HOTEL_MANAGER")
-                        .requestMatchers("/auth/**").anonymous()
-                        .requestMatchers("/bookings/**").authenticated()
-                        .anyRequest().permitAll()
+                                .requestMatchers("/bookings/**").authenticated()
+
+//                        .requestMatchers("/auth/**").anonymous()
+                                .requestMatchers("/users/**").authenticated()
+                                .anyRequest().permitAll()
                 )
                 .exceptionHandling(exHandlingConfig->exHandlingConfig.accessDeniedHandler(accessDeniedHandler()));
 

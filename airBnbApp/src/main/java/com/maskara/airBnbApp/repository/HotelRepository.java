@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Long> {
-    List<Hotel> finByOwner(User user);
+    List<Hotel> findByOwner(User user);
 }

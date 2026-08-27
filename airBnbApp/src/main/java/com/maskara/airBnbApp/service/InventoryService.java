@@ -1,10 +1,10 @@
 package com.maskara.airBnbApp.service;
 
-import com.maskara.airBnbApp.dto.HotelDto;
-import com.maskara.airBnbApp.dto.HotelPriceDto;
-import com.maskara.airBnbApp.dto.HotelSearchRequest;
+import com.maskara.airBnbApp.dto.*;
 import com.maskara.airBnbApp.modal.Room;
 import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface InventoryService {
 
@@ -14,4 +14,8 @@ public interface InventoryService {
     void deleteFutureInventory(Room room);
 
     Page<HotelPriceDto> searchHotels(HotelSearchRequest hotelSearchRequest);
+
+    List<InventoryDto> getAllInventoryByRoom(Long roomId);
+
+    void updateInventory(Long roomId, UpdateInventoryRequestDto updateInventoryRequestDto);
 }

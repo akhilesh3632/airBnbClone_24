@@ -1,5 +1,6 @@
 package com.maskara.airBnbApp.modal;
 
+import com.maskara.airBnbApp.modal.enums.Gender;
 import com.maskara.airBnbApp.modal.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -31,6 +32,9 @@ public class User implements UserDetails {
     private String password; //encrypted
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)

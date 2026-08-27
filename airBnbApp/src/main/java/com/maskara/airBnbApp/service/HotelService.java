@@ -22,4 +22,6 @@ public interface HotelService {
 
 
     List<HotelDto> getAllHotels();
+
+    List<HotelDto> getAllHotelsForAdmin();
 }
