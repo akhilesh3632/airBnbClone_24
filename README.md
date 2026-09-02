@@ -14,7 +14,13 @@ This project provides APIs for user authentication, hotel management, room avail
 
 Explore and test all available REST APIs using Swagger/OpenAPI.
 
-> 🚀 **Public Swagger URL will be added after deployment.**
+👉 **[Open Live Swagger UI](https://airbnbclone-24.onrender.com/api/v1/swagger-ui/index.html)**
+
+The API is deployed and publicly accessible through Render.
+
+### 🌐 Live API
+
+👉 **[Open Live API](https://airbnbclone-24.onrender.com/api/v1/)**
 
 ### Local Swagger
 
@@ -22,8 +28,6 @@ After starting the application locally, open:
 
 ```text
 http://localhost:8080/api/v1/swagger-ui/index.html
-```
-
 OpenAPI specification:
 
 ```text
